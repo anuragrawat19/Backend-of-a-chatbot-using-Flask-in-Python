@@ -1,16 +1,16 @@
-from flask import Flask,jsonify,request,json
-import os.path
-import datetime
+from flask import Flask,jsonify,request,json #Importing Flask to create web application
+import os.path  #importing os.path for manipulating file and directories in  your system
+import datetime # this module provides different function for dealing with date and time
 
 
 now=datetime.datetime.now()
 date=(now.strftime("%Y-%m-%d"))
 time=(now.strftime("%H-%m-%s"))
-app=Flask(__name__)
+app=Flask(__name__)# giving instance of flask class to variable app
 
 
 
-@app.route("/add-feeling/<emailId>",methods=["POST"])
+@app.route("/add-feeling/<emailId>",methods=["POST"])# created an end point using post method 
 
 def add_feelings(emailId):
 	if os.path.isfile("data.json"):
@@ -34,7 +34,7 @@ def add_feelings(emailId):
 
 
 
-@app.route("/add-feeling/<emailId>/gbu_content",methods=["GET"])
+@app.route("/add-feeling/<emailId>/gbu_content",methods=["GET"])#created and end point to get the feeelings 
 
 def gbu_content(emailId):
 	with open("data.json") as file:
